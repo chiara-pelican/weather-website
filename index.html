@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@300;400&family=Patrick+Hand+SC&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/2fe3756a95.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>⛅ Weather app</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="today-info row">
+        <div class="col">
+          <img
+            src="images/icons_chiara_Sunny.svg"
+            alt="sun"
+            class="today-image"
+          />
+        </div>
+        <div class="col">
+          <div class="date" id="current-date">Date</div>
+          <h1 class="city" id="city">Rome</h1>
+
+          <br />
+          <span class="temperature" id="temperature">19</span>
+          <span class="celsius black" id="celsius">°C</span>
+          <!-- span class="bar">|</span>
+          <span class="fahrenheit gray" id="fahrenheit">°F</span-->
+        </div>
+        <div class="col">
+          <ul class="specification">
+            <li class="specification1" id="pressure">Pressure: 0%</li>
+            <li class="specification1" id="humidity">Humidity: 67%</li>
+            <li class="specification1" id="wind">Wind: 21km/h</li>
+          </ul>
+        </div>
+      </div>
+      <br />
+      <div class="search-bar input-group" id="search-form">
+        <input
+          type="search"
+          class="form-control"
+          id="form-input"
+          placeholder="Type the city"
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+        <button class="location-button" id="location" type="submit">
+          <i class="fa-solid fa-location-crosshairs"></i>
+        </button>
+        <button
+          class="input-group-text search-button"
+          id="search-addon"
+          type="submit"
+        >
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
+      <br />
+      <br />
+      <div class="next-days row">
+        <div class="col">
+          <h3 class="day">Sunday</h3>
+          <br />
+          <h4 class="temperature-nextdays">16°C/22°C</h4>
+          <br /><img
+            src="images/Icons_chiara_Sunny.svg"
+            alt="sun"
+            class="image-nextdays"
+          />
+        </div>
+        <div class="col">
+          <h3 class="day">Monday</h3>
+          <br />
+          <h4 class="temperature-nextdays">16°C/22°C</h4>
+          <br /><img
+            src="images/Icons_chiara_Sun and cloudy.svg"
+            alt="sun and clouds"
+            class="image-nextdays"
+          />
+        </div>
+        <div class="col">
+          <h3 class="day">Tuesday</h3>
+          <br />
+          <h4 class="temperature-nextdays">16°C/22°C</h4>
+          <br /><img
+            src="images/Icons_chiara_Sunny.svg"
+            alt="sun"
+            class="image-nextdays"
+          />
+        </div>
+        <div class="col">
+          <h3 class="day">Wednesday</h3>
+          <br />
+          <h4 class="temperature-nextdays">16°C/22°C</h4>
+          <br /><img
+            src="images/Icons_chiara_Sun and cloudy.svg"
+            alt="sun and clouds"
+            class="image-nextdays"
+          />
+        </div>
+        <div class="col">
+          <h3 class="day">Thursday</h3>
+          <br />
+          <h4 class="temperature-nextdays">16°C/22°C</h4>
+          <br /><img
+            src="images/Icons_chiara_Sunny.svg"
+            alt="sun"
+            class="image-nextdays"
+          />
+        </div>
+        <div class="col">
+          <h3 class="day">Friday</h3>
+          <br />
+          <h4 class="temperature-nextdays">16°C/22°C</h4>
+          <br /><img
+            src="images/Icons_chiara_Sun and cloudy.svg"
+            alt="sun and clouds"
+            class="image-nextdays"
+          />
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
+  </body>
+</html>
