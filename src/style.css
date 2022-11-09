@@ -1,17 +1,28 @@
 body {
-  background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  background: linear-gradient(0deg, #c7ffed 20%, #015958 20%);
   height: 100%;
+  width: 100%;
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
+.container {
+  background-color: #f2e3d5;
+  height: 70%;
+  width: 70%;
+  padding: 20px;
+  margin: 50px auto;
+}
 h1,
 h2,
 h3,
 h4,
 ul {
-  font-family: "Patrick Hand SC", cursive;
+  font-family: "Alegreya Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 4vw;
+  font-weight: 300;
 }
 
 h1 {
@@ -37,13 +48,15 @@ ul {
   font-size: 1.25vw;
 }
 .date {
-  font-family: "Patrick Hand SC", cursive;
-  font-size: 2vw;
+  font-family: "Alegreya Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5vw;
 }
 
 .form-control {
   border-radius: 20px;
-  font-family: "Patrick Hand SC", cursive;
+  font-family: "Alegreya Sans", sans-serif;
+  text-transform: uppercase;
   height: 30px;
 }
 .form-control:focus {
@@ -77,12 +90,24 @@ ul {
   background-color: black;
   transition: 200ms ease-in-out;
 }
+ul {
+  font-family: "Alegreya Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 1vw;
+}
 .temperature,
 .celsius,
 .fahrenheit,
 .bar {
   font-size: 2vw;
-  font-family: "Patrick Hand SC", cursive;
+  font-family: "Alegreya Sans", sans-serif;
+  text-transform: uppercase;
+}
+.day {
+  font-family: "Alegreya Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2vw;
+  font-weight: 400;
 }
 .black {
   color: black;
@@ -100,6 +125,9 @@ ul {
   cursor: pointer;
 }
 .today-info {
+  font-family: "Alegreya Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
   align-items: center;
   margin: 0 auto;
   max-width: 70vw;
