@@ -20,7 +20,7 @@ function formatDate(currentDate) {
     "Sunday",
     "Monday",
     "Tuesday",
-    "Wednsday",
+    "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
@@ -58,17 +58,58 @@ date.innerHTML = formattedDate;
 
 //Search bar realtime weather
 let apiKey = "7ctdc077a2e3a3ado6fe94bb8949bd5b";
-let apiEndCode = `https://api.shecodes.io/weather/v1/current?`;
+let apiEndCode = `https://api.shecodes.io/weather/v1/`;
 let unit = "metric";
 let limit = 1;
+
+function formatDay(datestamp) {
+  let date = new Date(datestamp * 1000);
+  let day = date.getDay();
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function (forecastDay) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="col">
+          <h3 class="day">${formatDay(forecastDay.time)}</h3>
+          <img src="images/${
+            forecastDay.condition.icon
+          }.svg" class="image-nextdays" />
+          <h4 class="temperature-nextdays">${Math.round(
+            forecastDay.temperature.maximum
+          )} - ${Math.round(forecastDay.temperature.minimum)} °C </h4>
+        
+         
+        </div>
+`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiUrl = `${apiEndCode}forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function returnWeather(weather) {
   console.log(weather);
   let iconToday = document.querySelector("#icon-today");
-  iconToday.setAttribute(
-    "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${weather.data.condition.icon}.png`
-  );
+  iconToday.setAttribute("src", `images/${weather.data.condition.icon}.svg`);
+  console.log(weather.iconToday);
 
   celsiusTemperature = weather.data.temperature.current;
   fahrenheitTemperature = celsiusTemperature * 1.8 + 32;
@@ -92,12 +133,14 @@ function returnWeather(weather) {
 
   celsius.setAttribute("class", "black");
   fahrenheit.setAttribute("class", "gray");
+
+  getForecast(weather.data.coordinates);
 }
 function changeCity(input) {
   input.preventDefault();
   let inputCity = document.querySelector("#form-input").value;
 
-  let apiUrl = `${apiEndCode}query=${inputCity}&key=${apiKey}&units=${unit}`;
+  let apiUrl = `${apiEndCode}current?query=${inputCity}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(returnWeather);
 }
 
@@ -105,7 +148,7 @@ function currentLocation(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let unit = "metric";
-  let apiUrlLoc = `${apiEndCode}lon=${lon}&lat=${lat}&key=${apiKey}&units=${unit}`;
+  let apiUrlLoc = `${apiEndCode}current?lon=${lon}&lat=${lat}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrlLoc).then(returnWeather);
 }
 
